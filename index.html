@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Waste to NGO Connector</title>
+</head>
+
+<body>
+  <h1>Food Waste to NGO Connector</h1>
+
+  <!-- LOGIN / SIGNUP -->
+  <h2>Login / Signup</h2>
+  <input type="email" id="email" placeholder="Email"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
+
+  <select id="role">
+    <option value="provider">Food Provider</option>
+    <option value="ngo">NGO</option>
+  </select><br><br>
+
+  <button onclick="signup()">Sign Up</button>
+  <button onclick="login()">Login</button>
+
+  <hr>
+
+  <!-- ADD FOOD -->
+  <h2>Add Leftover Food (Provider)</h2>
+  <input id="foodType" placeholder="Food Type"><br><br>
+  <input id="quantity" placeholder="Quantity"><br><br>
+  <input id="location" placeholder="Location"><br><br>
+  <input id="expiry" placeholder="Expiry Time"><br><br>
+
+  <button onclick="addFood()">Add Food</button>
+
+  <hr>
+
+  <!-- NGO VIEW -->
+  <h2>Available Food (NGO)</h2>
+  <ul id="foodList"></ul>
+
+  <!-- Firebase Logic -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
