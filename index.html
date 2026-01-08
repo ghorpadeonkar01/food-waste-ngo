@@ -2,42 +2,75 @@
 <html>
 <head>
   <title>Food Waste to NGO Connector</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>Food Waste to NGO Connector</h1>
+
+<div class="container">
+
+  <header>
+    <h1>🍽 Food Waste to NGO Connector</h1>
+    <p>Connecting leftover food providers with NGOs using Google Firebase</p>
+  </header>
 
   <!-- LOGIN / SIGNUP -->
-  <h2>Login / Signup</h2>
-  <input type="email" id="email" placeholder="Email"><br><br>
-  <input type="password" id="password" placeholder="Password"><br><br>
+  <div class="card">
+    <h2>Login / Signup</h2>
 
-  <select id="role">
-    <option value="provider">Food Provider</option>
-    <option value="ngo">NGO</option>
-  </select><br><br>
+    <div class="grid">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <select id="role">
+        <option value="provider">Food Provider</option>
+        <option value="ngo">NGO</option>
+      </select>
+    </div>
 
-  <button onclick="signup()">Sign Up</button>
-  <button onclick="login()">Login</button>
-
-  <hr>
+    <div class="food-actions">
+      <button onclick="signup()">Sign Up</button>
+      <button class="secondary" onclick="login()">Login</button>
+    </div>
+  </div>
 
   <!-- ADD FOOD -->
-  <h2>Add Leftover Food (Provider)</h2>
-  <input id="foodType" placeholder="Food Type"><br><br>
-  <input id="quantity" placeholder="Quantity"><br><br>
-  <input id="location" placeholder="Location"><br><br>
-  <input id="expiry" placeholder="Expiry Time"><br><br>
+  <div class="card" id="providerSection">
+    <h2>Add Leftover Food (Provider)</h2>
 
-  <button onclick="addFood()">Add Food</button>
+    <div class="grid">
+      <input id="foodType" placeholder="Food Type (e.g. Rice)">
+      <input id="quantity" placeholder="Quantity (e.g. 50 plates)">
+      <input id="location" placeholder="Location (City / Area)">
+      <input id="expiry" placeholder="Expiry Time">
+    </div>
 
-  <hr>
+    <br>
+    <button onclick="addFood()">Add Food</button>
+  </div>
 
   <!-- NGO VIEW -->
-  <h2>Available Food (NGO)</h2>
-  <ul id="foodList"></ul>
+  <div class="card" id="ngoSection">
+    <h2>Available Food (NGO)</h2>
+    <div id="foodList"></div>
 
-  <!-- Firebase Logic -->
-  <script type="module" src="app.js"></script>
+    <h3>Food Location Map</h3>
+    <div id="map"></div>
+  </div>
+
+  <footer>
+    Built using Firebase, Firestore & Google Maps | Tech Catalyst Hackathon Project
+  </footer>
+
+</div>
+
+<script type="module" src="app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKrJ_ZoXUoJ-GrEszhVR-Jkg3HZAQq-s"></script>
+<style>
+  #providerSection,
+  #ngoSection {
+    display: none;
+  }
+</style>
+
 </body>
 </html>

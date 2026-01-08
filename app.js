@@ -3,7 +3,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebas
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 import {
   getFirestore,
@@ -12,6 +13,8 @@ import {
   getDocs,
   updateDoc,
   doc,
+  getDoc,
+  setDoc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
@@ -41,8 +44,7 @@ window.signup = async function () {
 
   const userCred = await createUserWithEmailAndPassword(auth, email, password);
 
-  await addDoc(collection(db, "users"), {
-    uid: userCred.user.uid,
+  await setDoc(doc(db, "users", userCred.user.uid), {
     email: email,
     role: role,
     createdAt: serverTimestamp()
@@ -53,13 +55,17 @@ window.signup = async function () {
 
 // 🔹 LOGIN
 window.login = async function () {
-  await signInWithEmailAndPassword(
-    auth,
-    document.getElementById("email").value,
-    document.getElementById("password").value
-  );
-  alert("Login successful!");
-  loadFood();
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      document.getElementById("email").value,
+      document.getElementById("password").value
+    );
+    alert("Login successful!");
+  } catch (error) {
+    alert("Login failed: " + error.message);
+    console.error(error);
+  }
 };
 
 // 🔹 ADD FOOD
@@ -103,15 +109,43 @@ async function loadFood() {
     const food = docSnap.data();
 
     if (food.status === "available") {
-      const li = document.createElement("li");
+      const li = document.createElement("div");
+      li.className = "food-item";
+
       li.innerHTML = `
-        ${food.foodType} (${food.quantity}) - ${food.location}
-        <button onclick="acceptFood('${docSnap.id}')">Accept</button>
+        <strong>${food.foodType}</strong><br>
+        Quantity: ${food.quantity}<br>
+        Location: ${food.location}
+        <div class="food-actions">
+          <button onclick="showMap('${food.location}')">View on Map</button>
+          <button class="secondary" onclick="acceptFood('${docSnap.id}')">Accept</button>
+        </div>
       `;
+
       list.appendChild(li);
     }
   });
 }
+// 🔹 SHOW MAP FOR FOOD LOCATION
+window.showMap = function (location) {
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 13,
+    center: { lat: 18.5204, lng: 73.8567 } // Default Pune
+  });
+
+  const geocoder = new google.maps.Geocoder();
+  geocoder.geocode({ address: location }, (results, status) => {
+    if (status === "OK") {
+      map.setCenter(results[0].geometry.location);
+      new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert("Could not find location on map");
+    }
+  });
+};
 
 // 🔹 ACCEPT FOOD
 window.acceptFood = async function (id) {
@@ -125,11 +159,30 @@ window.acceptFood = async function (id) {
   alert("Food accepted!");
   loadFood();
 };
-import { onAuthStateChanged } from 
-"https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
+
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) return;
+
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+
+  if (!userSnap.exists()) {
+    console.error("User role not found in Firestore");
+    return;
+  }
+
+  const role = userSnap.data().role;
+
+  if (role === "provider") {
+    document.getElementById("providerSection").style.display = "block";
+    document.getElementById("ngoSection").style.display = "none";
+  }
+
+  if (role === "ngo") {
+    document.getElementById("ngoSection").style.display = "block";
+    document.getElementById("providerSection").style.display = "none";
     loadFood();
   }
 });
