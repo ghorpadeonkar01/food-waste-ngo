@@ -77,27 +77,27 @@ The platform ensures faster food redistribution and reduced food wastage.
 ## 🏗️ Project Structure  
 
 food-waste-ngo/
-├── index.html
-├── style.css
-├── app.js
-├── firebase.json
-├── screenshots/
-└── README.md
+1. index.htmll
+2. style.css
+3. app.js
+4. firebase.json
+5. screenshots
+6. README.md
 ---
 
 ## 📸 Screenshots  
 
 ### 🔐 Login / Signup
-![Login](screenshots/login.png)
+![Login](Screenshots/login.png)
 
 ### 🧑‍🍳 Food Provider Dashboard
-![Provider](screenshots/provider.png)
+![Provider](Screenshots/provider.png)
 
 ### 🏥 NGO Dashboard
-![NGO](screenshots/ngo.png)
+![NGO](Screenshots/ngo.png)
 
 ### 🗺️ Food Location Map
-![Map](screenshots/map.png)
+![Map](Screenshots/map.png)
 
 ---
 
@@ -135,7 +135,7 @@ food-waste-ngo/
 ## 👨‍💻 Developer  
 
 **Onkar Ghorpade**  
-IT Engineering Student  
+FE,IT Engineering Student,SCOE-Pune.  
 
 GitHub: https://github.com/ghorpadeonkar01  
 
