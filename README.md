@@ -20,7 +20,7 @@
   -->
 
   <p>
-    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status">   
+    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status">
 
   </p>
 </div>
