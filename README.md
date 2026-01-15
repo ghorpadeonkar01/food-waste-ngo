@@ -20,9 +20,8 @@
   -->
 
   <p>
-    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status">
-    <img src="https://img.shields.io/badge/Hackathon-Winner-gold?style=for-the-badge" alt="Hackathon">
-    <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License">
+    <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status">   
+
   </p>
 </div>
 
@@ -84,13 +83,13 @@ This project is built with a focus on **speed**, **scalability**, and **user exp
 
 ## 📸 Screenshots
 
-| Login Interface | Provider Dashboard |
+| Homepage | Login Interface |
 |:---:|:---:|
-| <img src="Screenshots/login.png" width="400"> | <img src="Screenshots/provider.png" width="400"> |
+| <img src="Screenshots/homepage.png" width="400"> | <img src="Screenshots/login.png" width="400"> |
 
-| NGO Dashboard | Live Map |
+| Provider Dashboard | NGO Dashboard & Map |
 |:---:|:---:|
-| <img src="Screenshots/ngo.png" width="400"> | <img src="Screenshots/map.png" width="400"> |
+| <img src="Screenshots/provider.png" width="400"> | <img src="Screenshots/ngoandmap.png" width="400"> |
 
 ---
 
@@ -133,7 +132,7 @@ This project is more than code; it's a movement.
 <div align="center">
   <h3>🏆 Built for Tech Catalyst Hackathon 🏆</h3>
   <p>
-    Developed with ❤️ by <b>Onkar Ghorpade</b>
+    Developed with ❤️ by <b>Onkar Ghorpade|FE(IT)SCOE,PUNE|</b>
   </p>
   <p>
     <a href="https://github.com/ghorpadeonkar01">GitHub Profile</a>
