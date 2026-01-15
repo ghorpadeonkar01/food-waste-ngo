@@ -21,8 +21,6 @@
 
   <p>
     <img src="https://img.shields.io/badge/Status-Live-success?style=for-the-badge" alt="Status">
-    <img src="https://img.shields.io/badge/Hackathon-Winner-gold?style=for-the-badge" alt="Hackathon">
-    <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License">
   </p>
 </div>
 
